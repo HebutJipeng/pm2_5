@@ -1,0 +1,59 @@
+<!--weather-->
+
+<loading hidden="{{loading}}">
+  加载中...
+</loading>
+
+<view class="container">
+	<view class="header">
+		<view class="info">
+			<view class="info-detail">
+				<view class="info-detail-top">
+					<text class="top-left">{{pagedata.city.area}}</text>
+					<text class="top-right" bindtap="refresh">
+						<text class="refresh-icon"  bindtap="refresh"></text>
+						<text>{{pagedata.city.time}}</text>
+					</text>
+				</view>
+				<view class="info-detail-mid">
+					<view class="mid-left">{{pagedata.city.api}}</view>	
+					<view class="mid-right">
+						<text>API指数</text>
+						<text class="{{pagedata.city.level}}">{{pagedata.city.quality}}</text>
+					</view>
+				</view>
+				<view class="info-detail-bot">
+					<text>{{pagedata.city.density}}</text>
+				</view>
+			</view>
+		</view>
+		<view class="share">
+			<view bindtap="bindShareTap" class="share-btn">
+				<text class="share-word">分享</text>
+				<text class="share-icon"></text>
+			</view>
+		</view>
+		<view class="range">
+			<view class="range-bg"></view>
+		</view>
+	</view>
+	<view class="content">
+		<view class="item" wx:for="{{pagedata.tips}}"  wx:for-item="item">
+			<view class="title">{{item.title}}</view>
+			<text>{{item.content}}</text>
+		</view>
+		<view class="station item">
+			<view class="sta-name">
+				<text>监测站点</text>
+				<text>PM2.5(μg/m³)</text>
+				<text>AQI</text>
+			</view>
+			<view class="sta-item" wx:for="{{pagedata.station}}" wx:for-item="item">
+				<text>{{item.area}}</text>
+				<text>{{item.pm2_5}}</text>
+				<text class="{{item.level}}">{{item.api}}</text>
+			</view>
+		</view>
+	</view>
+
+</view>
